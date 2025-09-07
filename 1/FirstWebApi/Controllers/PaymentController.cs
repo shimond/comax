@@ -1,5 +1,6 @@
 ﻿using FirstWebApi.Contracts;
 using FirstWebApi.Model.Requests;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
 
@@ -7,6 +8,7 @@ namespace FirstWebApi.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+
 public class PaymentController : ControllerBase
 {
     private readonly ILogger<PaymentController> _logger;
@@ -26,7 +28,6 @@ public class PaymentController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> DoPayment(DoPaymentRequest doPaymentRequest)
     {
-
         if(doPaymentRequest.Amount < 0)
         {
             return BadRequest();
