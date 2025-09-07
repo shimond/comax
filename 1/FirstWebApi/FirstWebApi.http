@@ -18,14 +18,23 @@ POST {{FirstWebApi_HostAddress}}/api/products
 ###
 GET {{FirstWebApi_HostAddress}}/api/products
 ###
+POST {{FirstWebApi_HostAddress}}/api/payment/cancel
+// var controller = new PayementConroller
+//controller.CancelPayment({})
+{
+  "paymentCode" : "PAY001"
+}
+###
+POST {{FirstWebApi_HostAddress}}/api/payment 
+// var controller = new PayementConroller
+// controller.DoPayment({})
 
-POST {{FirstWebApi_HostAddress}}/api/payment
 Content-Type: application/json
 
 {
   "id": 123,
   "paymentCode": "PAY001",
-  "amount":-9
+  "amount":987
 }
 
 ###

@@ -1,4 +1,5 @@
-﻿using FirstWebApi.Model.Requests;
+﻿using FirstWebApi.Contracts;
+using FirstWebApi.Model.Requests;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
 
@@ -8,14 +9,22 @@ namespace FirstWebApi.Controllers;
 [ApiController]
 public class PaymentController : ControllerBase
 {
-    private readonly ILogger<PaymentController> logger;
-    public PaymentController(ILogger<PaymentController> logger)
+    private readonly ILogger<PaymentController> _logger;
+    private readonly IPaymentManager _paymentManager;
+    private readonly ICancelOperation _cancelOperation;
+
+    public PaymentController(
+        ILogger<PaymentController> logger, 
+        ICancelOperation cancelOperation,
+        IPaymentManager paymentManager)
     {
-        this.logger = logger;
+        this._logger = logger;
+        this._paymentManager = paymentManager;
+        this._cancelOperation = cancelOperation;
     }
     
     [HttpPost]
-    public IActionResult DoPayment(DoPaymentRequest doPaymentRequest)
+    public async Task<IActionResult> DoPayment(DoPaymentRequest doPaymentRequest)
     {
 
         if(doPaymentRequest.Amount < 0)
@@ -23,12 +32,15 @@ public class PaymentController : ControllerBase
             return BadRequest();
         }
 
+        var result = await this._paymentManager.DoThePayment(doPaymentRequest.Id, doPaymentRequest.Amount);   
+
         var response = new DoPaymentResponse
         {
             PaymentId = doPaymentRequest.Id,
-            ActualAmount = doPaymentRequest.Amount
+            ActualAmount = result
         };
-
+        //return Ok(true);
+        //return Ok("Hello");
         return  Ok(response);
 
         // processing payment
@@ -52,6 +64,12 @@ public class PaymentController : ControllerBase
 
     }
 
+    [HttpPost("cancel")]
+    public async Task<IActionResult> CancelPayment(string paymentCode)
+    {
+        await this._cancelOperation.DoCancel(paymentCode);
+        return Ok();
+    }
 
 
 
@@ -59,7 +77,7 @@ public class PaymentController : ControllerBase
     [OutputCache(Duration =60)]
     public async  Task<string> GetPaymentStatus()
     {
-        logger.LogInformation("GetPaymentStatus invoked");
+        _logger.LogInformation("GetPaymentStatus invoked");
         await Task.Delay(5000);
         return "Payment processed successfully.";
     }
