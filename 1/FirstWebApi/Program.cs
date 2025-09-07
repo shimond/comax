@@ -14,6 +14,8 @@ var app = builder.Build();
 
 app.MapPaymentsApis();
 
+//PaymentsApi.MapPaymentsApis(app);
+
 app.Run();
 
 
