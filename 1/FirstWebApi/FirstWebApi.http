@@ -1,4 +1,4 @@
-@FirstWebApi_HostAddress = http://localhost:5048
+@FirstWebApi_HostAddress = https://localhost:7144
 
 GET {{FirstWebApi_HostAddress}}/
 Accept: application/json
@@ -17,4 +17,20 @@ POST {{FirstWebApi_HostAddress}}/api/products
 
 ###
 GET {{FirstWebApi_HostAddress}}/api/products
+###
 
+POST {{FirstWebApi_HostAddress}}/api/payment
+Content-Type: application/json
+
+{
+  "id": 123,
+  "paymentCode": "PAY001",
+  "amount":-9
+}
+
+###
+
+GET {{FirstWebApi_HostAddress}}/api/payment/status
+
+###
+OPTIONS {{FirstWebApi_HostAddress}}/api
