@@ -1,0 +1,20 @@
+@FirstWebApi_HostAddress = http://localhost:5048
+
+GET {{FirstWebApi_HostAddress}}/
+Accept: application/json
+
+###
+
+GET http://comax.co.il
+Accept: application/json
+
+###
+POST {{FirstWebApi_HostAddress}}/api/products
+
+{
+  "id":"101"
+}
+
+###
+GET {{FirstWebApi_HostAddress}}/api/products
+
