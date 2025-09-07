@@ -21,21 +21,3 @@ app.MapControllers();
 app.Run();
 
 
-public class ComaxCacheOutputStore : IOutputCacheStore
-{
-    //delete from cache by key
-    public ValueTask EvictByTagAsync(string tag, CancellationToken cancellationToken)
-    {
-       return ValueTask.CompletedTask;
-    }
-
-    public ValueTask<byte[]?> GetAsync(string key, CancellationToken cancellationToken)
-    {
-         return ValueTask.FromResult<byte[]?>(null); 
-    }
-
-    public ValueTask SetAsync(string key, byte[] value, string[]? tags, TimeSpan validFor, CancellationToken cancellationToken)
-    {
-        return ValueTask.CompletedTask;
-    }
-}
