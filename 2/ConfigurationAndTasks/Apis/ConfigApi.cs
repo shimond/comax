@@ -16,24 +16,24 @@ public static class Config
 
         return app;
     }
-    static async Task<Results<NotFound, Ok<string>>> GetConfig(IConfiguration configuration)
+    static async Task<Ok<string>> GetConfig(IConfiguration configuration)
     {
         var mySetting = configuration["ComaxValue"];
         return TypedResults.Ok(mySetting);
     }
-    static async Task<Results<NotFound, Ok<SmtpConfig>>> GetConfigComplex(IOptions<SmtpConfig> smtpConfig)
+    static async Task<Ok<SmtpConfig>> GetConfigComplex(IOptions<SmtpConfig> smtpConfig)
     {
         SmtpConfig smtp = smtpConfig.Value;
         return TypedResults.Ok(smtpConfig.Value);
     }
 
-    static async Task<Results<NotFound, Ok<SmtpConfig>>> GetConfigComplexSnapshot(IOptionsSnapshot<SmtpConfig> smtpConfig)
+    static async Task<Ok<SmtpConfig>> GetConfigComplexSnapshot(IOptionsSnapshot<SmtpConfig> smtpConfig)
     {
         SmtpConfig smtp = smtpConfig.Value;
         return TypedResults.Ok(smtpConfig.Value);
     }
 
-    static async Task<Results<NotFound, Ok<string>>> GetConfigPath(IConfiguration configuration)
+    static async Task<Ok<string>> GetConfigPath(IConfiguration configuration)
     {
         //Environment.GetEnvironmentVariable();
 

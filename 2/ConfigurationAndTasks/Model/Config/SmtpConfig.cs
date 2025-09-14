@@ -7,4 +7,9 @@ public record SmtpConfig
     public required string UserName { get; init; }
     public required string Password { get; init; }
     public string[] AllowSenders { get; init; } = [];
+
+    public SmtpConfig()
+    {
+        
+    }
 }
