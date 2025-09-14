@@ -6,6 +6,13 @@ using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
+
+// records
+// configuration - appsettings.json, environment variables, command line arguments, user secrets IOptions, IOptionsSnapshot
+// async await
+// I/O Threads
+// Task
+
 namespace TestAsync
 {
     internal class Program
