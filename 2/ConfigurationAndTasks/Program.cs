@@ -11,8 +11,8 @@ builder.Services.AddScoped<ICancelOperation, PaymentCancelOperation>();
 
 var app = builder.Build();
 
-app.MapPaymentsApis();
-app.MapConfigApis();
+app.MapPaymentsApis()
+    .MapConfigApis();
 app.Run();
 
 

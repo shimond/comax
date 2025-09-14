@@ -1,7 +1,4 @@
-﻿using ConfigurationAndTasks.Model.Config;
-using Microsoft.Extensions.Options;
-
-namespace FirstWebApi.Apis;
+﻿namespace FirstWebApi.Apis;
 
 public static class Config
 {
@@ -44,9 +41,6 @@ public static class Config
         return TypedResults.Ok(mySetting);
     }
 
-    //appsettings.json
-    //appsettings.{env}.json
-    //Environment Variables
-    //Command line arguments
+    
 
 }

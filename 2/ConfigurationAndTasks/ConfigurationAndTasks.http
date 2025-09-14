@@ -1,7 +1,6 @@
 @FirstWebApi_HostAddress = https://localhost:7144
 
 
-//https://source.dot.net/#Microsoft.AspNetCore/WebApplicationBuilder.cs,99aa99b238241808
 
 ###
 GET {{FirstWebApi_HostAddress}}/api/config
@@ -64,3 +63,13 @@ GET {{FirstWebApi_HostAddress}}/api/payment/status
 
 ###
 OPTIONS {{FirstWebApi_HostAddress}}/api
+
+###
+
+//https://source.dot.net/#Microsoft.AspNetCore/WebApplicationBuilder.cs,99aa99b238241808
+
+//appsettings.json
+//appsettings.{env}.json
+//User secrets in dev mode
+//Environment Variables
+//Command line arguments
