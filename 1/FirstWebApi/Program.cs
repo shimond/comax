@@ -1,7 +1,5 @@
 using FirstWebApi.Contracts;
-using FirstWebApi.Model.Requests;
 using FirstWebApi.Services;
-using Microsoft.AspNetCore.Http.HttpResults;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,8 +11,6 @@ builder.Services.AddScoped<ICancelOperation,  PaymentCancelOperation>();
 var app = builder.Build();
 
 app.MapPaymentsApis();
-
-//PaymentsApi.MapPaymentsApis(app);
 
 app.Run();
 
