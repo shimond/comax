@@ -7,7 +7,9 @@ public record DoPaymentRequest
     public decimal Amount { get; init; } = 0;
     public bool? IsVip { get; init; }
     //public Nullable<bool> IsVip { get; init; }
-}
+}   
+public record DoPaymentRequestRecord(int Id, string PaymentCode, decimal Amount = 222, bool? IsVip = false);
+
 
 public static class Util
 {
