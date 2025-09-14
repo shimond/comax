@@ -1,5 +1,26 @@
 @FirstWebApi_HostAddress = https://localhost:7144
 
+
+//https://source.dot.net/#Microsoft.AspNetCore/WebApplicationBuilder.cs,99aa99b238241808
+
+###
+GET {{FirstWebApi_HostAddress}}/api/config
+###
+
+###
+GET {{FirstWebApi_HostAddress}}/api/config/getPath
+###
+
+
+###
+GET {{FirstWebApi_HostAddress}}/api/config/complex
+###
+
+
+###
+GET {{FirstWebApi_HostAddress}}/api/config/complexSnapshot
+###
+
 GET {{FirstWebApi_HostAddress}}/
 Accept: application/json
 
